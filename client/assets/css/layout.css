@@ -1,0 +1,54 @@
+/* ===========================
+   Kathbath Page Layout
+=========================== */
+.kathbath-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+}
+
+.kathbath-page header-component {
+  flex: 0 0 auto;
+}
+
+.kathbath-page .kathbath-body {
+  flex: 1 1 auto;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.kathbath-page sidebar-component {
+  flex: 0 0 250px;
+  min-width: 60px;
+  overflow-y: auto;
+  transition: flex 0.3s ease;
+  border-right: 1px solid #ddd;
+}
+
+/* Contact Panel */
+.kathbath-page contact-component {
+  flex: 0 0 250px;
+  overflow-y: auto;
+  border-left: 1px solid #ddd;
+}
+
+/* Chat Panel */
+.kathbath-page .chat-container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kathbath-page sidebar-component,
+  .kathbath-page contact-component {
+    display: none;
+  }
+
+  .kathbath-page .chat-container {
+    flex: 1 1 100%;
+  }
+}

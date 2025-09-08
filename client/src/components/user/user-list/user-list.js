@@ -1,7 +1,7 @@
 import api from "../../../services/api.js";
 import userListTemplate from "./user-list-template.js"
 const {ref,onMounted}=Vue;
-const {useRouter}=VueRouter;
+const { useRouter, useRoute } = VueRouter;
 const userList ={
     components:{
 

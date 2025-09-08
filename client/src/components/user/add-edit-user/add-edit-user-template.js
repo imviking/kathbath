@@ -1,58 +1,58 @@
 const addEditUserTemplate = `    
-<div class="container mt-4">
-    <div class="row justify-content-center">
-    
-    
-    <div class="col-md-6">
-        <div class="mb-3">
-            <p><h3>{{action === 'AddUser' ? 'Add User' :'Edit User'}}</h3> </p>
-        </div>
-        <form @submit.prevent="addUser">
-        <div class="mb-3">
+<div class="user-form-wrapper d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg user-form-card">
+    <div class="card-body">
+      <h3 class="text-center mb-4">
+        {{ action === 'AddUser' ? 'Add User' : 'Edit User' }}
+      </h3>
+      
+      <form @submit.prevent="addUser">
+        <div class="row">
+          <div class="col-md-4 mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" v-model="userData.fullName.firstName">
-        </div>
-        <div class="mb-3">
+            <input type="text" id="firstName" class="form-control" v-model="userData.fullName.firstName" required>
+          </div>
+          <div class="col-md-4 mb-3">
             <label for="middleName" class="form-label">Middle Name</label>
-            <input type="text" class="form-control" id="middleName" v-model="userData.fullName.middleName">
-            </div>
-        <div class="mb-3">
+            <input type="text" id="middleName" class="form-control" v-model="userData.fullName.middleName">
+          </div>
+          <div class="col-md-4 mb-3">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" v-model="userData.fullName.lastName">
+            <input type="text" id="lastName" class="form-control" v-model="userData.fullName.lastName" required>
+          </div>
         </div>
 
         <div class="mb-3">
-            <label for="Gender" class="form-label">Gender</label>
-            <div class="d-block">
-                <div class="ms-5">
-                    <input class="" type="radio" value ='Male' class="form-control-radio" id="userName" v-model="userData.gender"/><span class="m-2 mb-0">Male</span>
-                </div>
-                <div class="ms-5">
-                    <input class="" type="radio" value='Female' class="form-control-radio" id="userName" v-model="userData.gender"/><span class="m-2 mb-0">Female</span>
-                </div>
-            </div>
+          <label class="form-label">Gender</label>
+          <div class="d-flex gap-4 ms-2">
+            <label class="form-check-label">
+              <input type="radio" value="Male" v-model="userData.gender" class="form-check-input" required> Male
+            </label>
+            <label class="form-check-label">
+              <input type="radio" value="Female" v-model="userData.gender" class="form-check-input"> Female
+            </label>
+          </div>
         </div>
 
         <div class="mb-3">
-            <label for="userName" class="form-label">User Name/Email</label>
-            <input type="text" class="form-control" id="userName" v-model="userData.email">
+          <label for="userName" class="form-label">User Name / Email</label>
+          <input type="email" id="userName" class="form-control" v-model="userData.email" required>
         </div>
 
         <div v-if="action === 'AddUser'" class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" v-model="userData.password">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" class="form-control" v-model="userData.password" required>
         </div>
-        <div class="d-flex row" >
-            <div class ="col text-start" >
-                <button type="button" class="btn btn-secondary" @click = "router.go(-1)">Cancel</button>
-            </div>
-            <div class="col text-end">
-                <button type="submit" class="btn btn-primary ">{{action == 'AddUser' ? 'Save User' :'Update User'}}</button>
-            </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button type="button" class="btn btn-outline-secondary px-4" @click="router.go(-1)">Cancel</button>
+          <button type="submit" class="btn btn-primary px-4">
+            {{ action === 'AddUser' ? 'Save User' : 'Update User' }}
+          </button>
         </div>
-        
-        </form>
+      </form>
     </div>
-    </div>
-</div>`
-export default addEditUserTemplate
+  </div>
+</div>
+`
+export default addEditUserTemplate;

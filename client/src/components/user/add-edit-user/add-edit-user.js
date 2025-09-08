@@ -3,7 +3,7 @@ import addEditUserTemplate from "./add-edit-user-template.js"
 const {ref,onMounted,toRef}=Vue;
 const {useRoute,useRouter}=VueRouter
 const addEditUser ={
-    props: ['id'],
+    props: ['id', 'action'],
     components:{
 
     },
@@ -13,7 +13,7 @@ const addEditUser ={
      let userData = ref({
         fullName:{} 
      })
-     let action = route.query.action
+     let action = route.query.action || props.action || 'Add User'
 
      const getUserDetails = async()=>{
         try {

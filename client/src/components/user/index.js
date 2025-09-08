@@ -2,7 +2,8 @@ import addEditUser from "./add-edit-user/add-edit-user.js";
 import userList from "./user-list/user-list.js";
 
 const {ref,onMounted}=Vue;
-const {useRouter}=VueRouter
+const { useRouter, useRoute } = VueRouter;
+
 const homePage ={
     components:{
         userList,
@@ -28,7 +29,7 @@ const homePage ={
 
     <div class="d-flex row" >
         <div class ="col m-4 text-start" >
-             <p><h1>Home</h1></p>
+             <p><h1>Users</h1></p>
         </div>
         <div class="col m-4 text-end">
             <button @click="router.push({ name: 'add-edit-user',query: {action:'AddUser' } })"

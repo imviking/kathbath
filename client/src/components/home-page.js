@@ -1,10 +1,13 @@
 import api from "../services/api.js";
 import homePageTemplate from "./home-page-template.js"
+import login from "./login/login-page.js"
+import signup from "./user/add-edit-user/add-edit-user.js"
 const {ref,onMounted}=Vue;
 const { useRouter, useRoute } = VueRouter;
 const homePage ={
     components:{
-
+        login,
+        signup
     },
     setup(){
      const route = useRoute()
@@ -40,10 +43,11 @@ const homePage ={
         
      }
         onMounted(async()=>{
-            await getUserList()
+            // await getUserList()
         })
 
         return {
+            router,
             userList,
             popUp,
             userData,

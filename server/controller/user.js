@@ -12,6 +12,13 @@ const getUserList = async (request,response) => {
 const saveUser = async (request,response) =>{
   try {
    let userData = request.body.userData
+   if(!userData.email || !userData.fullName){
+    return response.status(400).send({success:false,message:'Required fields are missing'})
+   }
+   const emailExists = await userDao.getUserByEmail(userData.email)
+   if(emailExists && !userData._id){
+    return response.status(400).send({success:false,message:'Email already exists'})
+   }
    if(userData._id){
     let userId = userData._id;
     delete userData._id
@@ -25,15 +32,14 @@ const saveUser = async (request,response) =>{
    }
   } catch (error) {
     console.log(error)
-  }
-   
+  } 
 
 }
 const getUserById = async (request,response) =>{
   try {
     
     let userDetails = await userDao.getUserById(request.query.id,{password:0})
-    console.log(userDetails)
+    // console.log(userDetails)
     return response.status(201).send({success: true ,userData:userDetails})
   } catch (error) {
     console.log(error)
